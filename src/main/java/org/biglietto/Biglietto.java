@@ -48,7 +48,7 @@ private BigDecimal calcolaSconto(int eta){
 }
 
     // calcolaPrezzo: calcola il prezzo del biglietto comprensivo di eventuale sconto; richiama metodo calcolaSconto
-    public BigDecimal calcolaPrezzo(Biglietto){
+    public BigDecimal calcolaPrezzo(int km, int eta){
         BigDecimal KM = BigDecimal.valueOf(km);
         BigDecimal PREZZO =KM.multiply(COSTO);
         BigDecimal PREZZOTOTALE = PREZZO.subtract(calcolaSconto(eta));
