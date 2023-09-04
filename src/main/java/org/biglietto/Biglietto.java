@@ -6,9 +6,9 @@ public class Biglietto {
  private int km;
  private int eta;
 
- private final BigDecimal COSTO = new BigDecimal("0.21");
- private final BigDecimal SCONTOOVER65 = new BigDecimal("0.4");
- private final BigDecimal SCONTOMINORI = new BigDecimal("0.2");
+ private final BigDecimal COSTO_KM = new BigDecimal("0.21");
+ private final BigDecimal SCONTO_OVER_65 = new BigDecimal("0.6");
+ private final BigDecimal SCONTO_MINORI = new BigDecimal("0.8");
 
 
     //COSTRUTTORI
@@ -38,20 +38,19 @@ private boolean isValidKm(int km) {
 
     //calcolaSconto: metodo private
 private BigDecimal calcolaSconto(int eta){
-    BigDecimal SCONTO = new BigDecimal("0");
+    BigDecimal sconto = new BigDecimal("1");
     if(eta<18){
-        SCONTO = SCONTOMINORI;
+        sconto = SCONTO_MINORI;
     } else if(eta>65){
-        SCONTO = SCONTOOVER65;
+        sconto = SCONTO_OVER_65;
     }
-    return SCONTO;
+    return sconto;
 }
 
     // calcolaPrezzo: calcola il prezzo del biglietto comprensivo di eventuale sconto; richiama metodo calcolaSconto
     public BigDecimal calcolaPrezzo(int km, int eta){
-        BigDecimal KM = BigDecimal.valueOf(km);
-        BigDecimal PREZZO =KM.multiply(COSTO);
-        BigDecimal PREZZOTOTALE = PREZZO.subtract(calcolaSconto(eta));
-        return PREZZOTOTALE;
+        BigDecimal kmViaggio = BigDecimal.valueOf(km);
+        BigDecimal prezzo =kmViaggio.multiply(COSTO_KM).multiply(calcolaSconto(eta));
+        return prezzo;
     }
 }

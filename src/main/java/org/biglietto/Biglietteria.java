@@ -17,12 +17,11 @@ public class Biglietteria {
                 Biglietto biglietto = new Biglietto(km, eta);
                 isValid = true;
                 System.out.println("Biglietto valido");
+                System.out.println("Il prezzo del tuo biglietto è: " + biglietto.calcolaPrezzo(km, eta) + " €.");
             } catch (RuntimeException e) {
                 System.out.println("Il numero di km e l'età devono essere maggiori di 0.");
             }
-
         }
-
 
         scan.close();
     }
