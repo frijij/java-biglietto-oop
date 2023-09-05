@@ -14,17 +14,15 @@ public class Biglietteria {
             int km = Integer.parseInt(scan.nextLine());
             System.out.println("Età: ");
             int eta= Integer.parseInt(scan.nextLine());
-            System.out.println("Data del viaggio: ");
-            LocalDate data = LocalDate.parse(scan.nextLine());
-
-            System.out.println("Tipologia biglietto (normale/flessibile): ");
+            LocalDate data = LocalDate.now();
+            System.out.println("Biglietto flessibile? (Y/N)");
             String tipo = scan.nextLine();
             boolean flessibile=false;
-            switch (tipo) {
-                case "normale":
+            switch (tipo.toLowerCase()) {
+                case "n":
                     flessibile=false;
                     break;
-                case "flessibile":
+                case "y":
                     flessibile=true;
                     break;
                 default:
@@ -41,6 +39,8 @@ public class Biglietteria {
                 System.out.println("Il numero di km e l'età devono essere maggiori di 0.");
             }
         }
+
+
 
         scan.close();
     }

@@ -69,14 +69,13 @@ private BigDecimal calcolaSconto(int eta){
         BigDecimal prezzo =kmViaggio.multiply(COSTO_KM).multiply(calcolaSconto(eta));
         return prezzo;
     }
-    /*Aggiungere un metodo (calcolaDataScadenza: LocalDate) che calcola la data di scadenza del biglietto, applicando la durata normale o flessibile in base al parametro flessibile(boolean).*/
 
     public LocalDate calcolaDataScadenza(LocalDate data, boolean flessibile){
         LocalDate dataScadenza;
-        if (flessibile=false){
-           dataScadenza=data.plusDays(DURATA_BIGLIETTO_NORMALE);
-        } else {
+        if (flessibile){
             dataScadenza=data.plusDays(DURATA_BIGLIETTO_FLESSIBILE);
+        } else {
+            dataScadenza=data.plusDays(DURATA_BIGLIETTO_NORMALE);
         }
             return dataScadenza;
     }
